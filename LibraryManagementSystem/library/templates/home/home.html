@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<form action="/users/send_reminder/" method="post">
-    <button type="submit" class="btn btn-primary btn-sm tooltips" name="id" value="{{user.id}}">
-      Send reminder
-    </button>
-</form>
-{% endblock %}
