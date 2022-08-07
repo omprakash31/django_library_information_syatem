@@ -114,7 +114,6 @@ setuptools-scm==6.3.2
 six==1.16.0
 sklearn==0.0
 sqlparse==0.4.2
-tenacity==8.0.1
 tensorflow==2.7.0
 tensorflow-estimator==2.7.0
 tensorflow-io-gcs-filesystem==0.22.0
