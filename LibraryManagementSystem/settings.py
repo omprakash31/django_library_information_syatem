@@ -130,7 +130,8 @@ USE_TZ = True
 STATIC_URL = '/templates/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'templates'),
+    "library/templates"
+    # os.path.join(, 'templates'),
 ]
 
 # Default primary key field type
