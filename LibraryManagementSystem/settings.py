@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'mathfilters',
 ]
 
+DISABLE_COLLECTSTATIC=1
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
