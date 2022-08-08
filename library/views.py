@@ -183,7 +183,7 @@ def send_reminder(request):
             # s.sendmail("website.tester.django@gmail.com", "bikisahoo02@gmail.com", message)
             user_id=str(t.user_id)
             u=users.objects.filter(user_id=user_id).values_list("email").get()[0]
-            send_mail("library book overdue", message, "website.tester.django@gmail.com", [u], fail_silently=True)
+            send_mail("library book overdue", message, "librarytester250@gmail.com", [u], fail_silently=True)
             # terminating the session
 
     # s.quit()
@@ -266,7 +266,7 @@ def send_book(request):
     print(id,user_id,email)
     books=book.objects.get(pk=id)
     title=books.title
-    send_mail("E-book drive link", "You can download the book "+str(title)+" from the following link "+str(books.ebook_url), "website.tester.django@gmail.com", [email], fail_silently=True)
+    send_mail("E-book drive link", "You can download the book "+str(title)+" from the following link "+str(books.ebook_url), "librarytester250@gmail.com", [email], fail_silently=True)
     print(title)
     available_book=available_books.objects.filter(title=title)
     books={"books":books,"available_book":available_book}
