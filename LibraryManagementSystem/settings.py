@@ -29,8 +29,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1','librarysystembyom.herokuapp.com']
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'website.tester.django@gmail.com'
-EMAIL_HOST_PASSWORD = 'umhltstpuxcwmjcz'
+EMAIL_HOST_USER = 'librarytester250@gmail.com'
+EMAIL_HOST_PASSWORD = 'ehwwqdyysbbltexb'
 EMAIL_PORT = 587
 
 
