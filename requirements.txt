@@ -1,5 +1,6 @@
 attrs==21.4.0
 charset-normalizer==2.0.9
+daphne==3.0.2
 Django==4.0.6
 django-mathfilters==1.0.0
 entrypoints==0.3
