@@ -1,3 +1,4 @@
+from sqlite3 import Date
 from django.db import models
 from datetime import date
 
@@ -30,6 +31,7 @@ class users(models.Model):
     penalty=models.IntegerField()
     count=models.IntegerField()
     register_date=models.DateField(default=date.today(),null=True)
+    last_activity_date=models.DateField(default=date.today(),null=True)
     def __str__(self):
         return str(self.user_id)
 
@@ -60,5 +62,23 @@ class Sign(models.Model):
     email = models.CharField(max_length=60)
     def __str__(self):
         return self.username
+
+class reserve(models.Model):
+    username = models.CharField(max_length=30)
+    user_id=models.IntegerField(null=True)
+    title=models.CharField(max_length=30)
+    class Meta:
+        unique_together=('user_id','title')
+    def __str__(self):
+        return str(self.user_id)+"_"+self.title
+    
+class reserved_book(models.Model):
+    username = models.CharField(max_length=30)
+    user_id=models.IntegerField(null=True)
+    title=models.CharField(max_length=30)
+    reserve_date=models.DateField(default=Date.today())
+    ISBN=models.IntegerField(default=2000,unique=True)
+    def __str__(self):
+        return str(self.user_id)+"_"+self.title
 
 # cd LibraryManagementSystem

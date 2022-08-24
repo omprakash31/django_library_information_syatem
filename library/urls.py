@@ -13,6 +13,8 @@ urlpatterns = [
     path('users/profile_view/',views.profile_view),
     path('users/profile_view/add_book/',views.add_book_to_user),
     path('users/profile_view/delete_book/',views.delete_book),
+    path('users/profile_view/reserve_book/',views.reserve_book),
+    path('users/profile_view/reserve_book_to_user/',views.reserve_book_to_user),
     path('users/send_reminder/',views.send_reminder),
     path('users/profile_view/bill/',views.bill_view),
     path('users/profile_view/bill/bill_paid/',views.bill_paid),
