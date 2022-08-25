@@ -5,7 +5,7 @@ from itertools import count
 from unicodedata import category
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect,redirect
 from django.views.decorators.csrf import csrf_exempt
-# from matplotlib.pyplot import title
+from matplotlib.pyplot import title
 from .models import reserve, reserved_book, users,book_transaction,available_books,book,invoice_history,searchitem,Sign
 from dateutil.relativedelta import relativedelta
 from django.urls import reverse
@@ -215,9 +215,11 @@ def delete_book(request):
     # user={"user":users.objects.get(pk=id),"name":name,"book_issued":books_issued}
     return render(request,"user/profile_view.html",user)
 
+from .thread import *
 @ csrf_exempt
 def send_reminder(request):
-    send_email_to_user.delay()
+    # send_email_to_user.delay()
+    send_email_to_user().start()
     # transaction=book_transaction.objects.all()
     # # server = smtplib.SMTP_SSL(smtp_server_domain_name, port, context=ssl_context)
     # # 222222222222222
@@ -293,7 +295,7 @@ def searching(request):
             category=users.objects.get(user_id=e.user_id).category
             searchitem.objects.create(user_name=user_name,email=email,category=category,user_id=e.user_id)
     return HttpResponseRedirect('/users/search_item/search_item_view')
-    
+
 
 def searchview(request):
     li=[]
@@ -314,7 +316,7 @@ def book_profile(request):
 
 @ csrf_exempt
 def send_book(request):
-    user_id=request.POST["user_id"]
+    userid=request.POST["user_id"]
     id1=request.POST["id"]
     # email=users.objects.get(user_id=user_id).email
     # print(id,user_id,email)
@@ -322,7 +324,9 @@ def send_book(request):
     # title=books.title
     # send_mail("E-book drive link", "You can download the book "+str(title)+" from the following link "+str(books.ebook_url), "website.tester.django@gmail.com", [email], fail_silently=True)
     # print(title)
-    send_book_to_user.apply_async([user_id,id1])
+
+    send_reminder11(userid,id1).start()
+
     available_book=available_books.objects.filter(title=title)
     books={"books":books,"available_book":available_book}
     return render(request,"book/book_profile.html",books)
