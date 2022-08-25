@@ -14,8 +14,8 @@ def tick():
             reserved_book.objects.get(ISBN=rbook.ISBN).delete()
         print(rbook.user_id,datetime.now())
 def tick1():
-    print(1)
-    send_mail("library book overdue", message, "librarytester250@gmail.com", [bikisahoo02@gmail.com], fail_silently=True)
+    print("sriram see here")
+    print("dekh kahithili na print haba")
 
 def start():
     scheduler = BackgroundScheduler()
@@ -26,5 +26,10 @@ def start():
     scheduler.add_job(tick1, 'cron', hour=7, minute=18)
     scheduler.add_job(tick1, 'cron', hour=7, minute=19)
     scheduler.add_job(tick1, 'cron', hour=7, minute=20)
+    scheduler.add_job(tick1, 'cron', hour=7, minute=25)
+    scheduler.add_job(tick1, 'cron', hour=7, minute=26)
+    scheduler.add_job(tick1, 'cron', hour=7, minute=27)
+    scheduler.add_job(tick1, 'cron', hour=7, minute=28)
+    scheduler.add_job(tick1, 'cron', hour=7, minute=29)
     # scheduler.add_job(tick, 'cron', hour="11.57")
     scheduler.start()
