@@ -1,7 +1,6 @@
 attrs==21.4.0
 charset-normalizer==2.0.9
-daphne==3.0.2
-Django==3.2.5
+Django==4.0.6
 django-mathfilters==1.0.0
 entrypoints==0.3
 google-auth==2.3.3
@@ -28,13 +27,5 @@ Send2Trash==1.8.0
 setuptools-scm==6.3.2
 urllib3==1.26.7
 whitenoise==6.2.0
-dj-database-url==1.0.0
-psycopg2==2.9.3
-redis==3.5.3
-django-celery-beat==2.2.1
-django-celery-results==2.2.0
-django-timezone-field==4.1.2
-channels==3.0.3
-channels-redis==3.3.0
-celery==5.1.2
-python-crontab==2.5.1
+psycopg2-2.9.3
+apscheduler-3.9.1
