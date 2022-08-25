@@ -14,6 +14,7 @@ def tick():
             reserved_book.objects.get(ISBN=rbook.ISBN).delete()
         print(rbook.user_id,datetime.now())
 def tick1():
+    print(1)
     print(datetime.now())
 
 def start():
@@ -23,5 +24,6 @@ def start():
     # scheduler.add_job(tick, 'cron', hour='*')
     scheduler.add_job(tick, 'cron', hour=12, minute=1)
     scheduler.add_job(tick1, 'cron', hour=12, minute=12)
+    scheduler.add_job(tick1, 'cron', hour=12, minute=15)
     # scheduler.add_job(tick, 'cron', hour="11.57")
     scheduler.start()
