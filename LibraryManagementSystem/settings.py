@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from contextlib import _RedirectStream
 from pathlib import Path
 import os
+from celery.schedules import crontab
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'library',
     'mathfilters',
+    'django_celery_beat',
 ]
 
 
@@ -79,7 +81,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'LibraryManagementSystem.wsgi.application'
-# ASGI_APPLICATION = 'LibraryManagementSystem.asgi.application'
+ASGI_APPLICATION = 'LibraryManagementSystem.asgi.application'
 
 
 # Database
@@ -92,6 +94,10 @@ DATABASES = {
     }
 }
 
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+#DATABASES['default'] = dj_database_url.config(default='postgres://...'}
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -127,7 +133,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -147,19 +153,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CELERY SETTINGS
 # CELERY_BROKER_URL = os.environ['REDIS_URL']
 
-# CELERY_BROKER_URL = 'redis://localhost:6379'
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 # CELERY_RESULT_BACKEND = 'django-db'
-# CELERY_BROKEN_CONTENT=['application/json']
-# CELERY_RESULT_SERIALIZER='json'
-# CELERY_TASK_SERIALIZER='json'
-# CELERY_BEAT_SCHEDULE={
-#     'task-number-one':
-#     {
-#         'task':'library.tasks.scheduletask',
-#         'schedule':crontab(minute='*/2')
-#     }
-# }
-# CELERY_TIMEZONE = 'Asia/Kolkata'
+CELERY_BROKEN_CONTENT=['application/json']
+CELERY_RESULT_SERIALIZER='json'
+CELERY_TASK_SERIALIZER='json'
+CELERY_BEAT_SCHEDULE={
+    'task-number-one':
+    {
+        'task':'library.tasks.scheduletask',
+        'schedule':crontab(minute='*/2')
+    }
+}
+CELERY_TIMEZONE = 'Asia/Kolkata'
 
-# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
