@@ -13,7 +13,8 @@ def tick():
             book_added.save()
             reserved_book.objects.get(ISBN=rbook.ISBN).delete()
         print(rbook.user_id,datetime.now())
-
+def trick1():
+    print(datetime.now())
 
 def start():
     scheduler = BackgroundScheduler()
@@ -21,6 +22,6 @@ def start():
     # scheduler.add_job(tick, 'interval', minutes=5)
     # scheduler.add_job(tick, 'cron', hour='*')
     scheduler.add_job(tick, 'cron', hour=12, minute=1)
-    # scheduler.add_job(tick, 'cron', hour=12, minute=3)
+    scheduler.add_job(tick1, 'cron', hour=12, minute=12)
     # scheduler.add_job(tick, 'cron', hour="11.57")
     scheduler.start()
