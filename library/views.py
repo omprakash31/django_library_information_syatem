@@ -15,7 +15,6 @@ import re
 import time
 from datetime import datetime, timedelta
 from datetime import date
-from .tasks import *
 
 # Create your views here.
 def library_home_view(request):
