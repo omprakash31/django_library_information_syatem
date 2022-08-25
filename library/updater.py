@@ -13,7 +13,7 @@ def tick():
             book_added.save()
             reserved_book.objects.get(ISBN=rbook.ISBN).delete()
         print(rbook.user_id,datetime.now())
-def trick1():
+def tick1():
     print(datetime.now())
 
 def start():
