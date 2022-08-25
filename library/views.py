@@ -5,7 +5,7 @@ from itertools import count
 from unicodedata import category
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect,redirect
 from django.views.decorators.csrf import csrf_exempt
-# from matplotlib.pyplot import title
+from matplotlib.pyplot import title
 from .models import reserve, reserved_book, users,book_transaction,available_books,book,invoice_history,searchitem,Sign
 from dateutil.relativedelta import relativedelta
 from django.urls import reverse
