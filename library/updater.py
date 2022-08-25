@@ -19,7 +19,7 @@ def tick1():
 
 def start():
     scheduler = BackgroundScheduler()
-    # scheduler.add_job(tick, 'interval', seconds=10)
+    scheduler.add_job(tick1, 'interval', seconds=10)
     # scheduler.add_job(tick, 'interval', minutes=5)
     # scheduler.add_job(tick, 'cron', hour='*')
     scheduler.add_job(tick, 'cron', hour=12, minute=1)
