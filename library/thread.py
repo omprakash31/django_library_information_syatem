@@ -23,6 +23,7 @@ class send_email_to_user(threading.Thread):
                 # s.sendmail("website.tester.django@gmail.com", "bikisahoo02@gmail.com", message)
                 user_id=str(t.user_id)
                 u=users.objects.filter(user_id=user_id).values_list("email").get()[0]
+                print(11,22,33,u)
                 send_mail("library book overdue", message, "librarytester250@gmail.com", [u], fail_silently=True)
 
 
